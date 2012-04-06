@@ -1,0 +1,27 @@
+About abj: Alice Bob and Jack app
+
+This is a simple socket based app. Server Alice starts listening  on a port say 5000, Client Bob has to connect to Alice but through another server called Jack which is in a server-client relation with Alice already. Jack is evil but dumb. Alice and Bob already have agreed over a simple encryption scheme. Bob sends the message in which each ascii character is incremented by 1 before message leaves Bob's end. Jack, being evil but dumb intercepts the message but not able to figure out the original message (so dumb!!) It passes the message to Alice, where Alice retrieves the original message by decrementing 1 from each character received. And Jack is a loser.
+    Again, this is also a simple app. Effectively it demonstrates transmission of message from a  client to server in the presence of a middleman in the network.
+
+
+To compile:
+Use makefile.
+Run the make command: make
+
+How to use:
+1) Open 3 instances of terminal emulators say 3 xterms.. Effectively 3 new shell instances are needed.
+2) Change each emulators working directory to the directory containing the executables alice jack.
+3) In the first term emulator, type: ./alice 5000
+4) In second term emulator, type: ./jack localhost 5000 4000
+5) In third term emulator, type: ./bob localhost 4000
+6) If 3,4,5 ran successfully, bob is waiting for your input.
+    Enter a message say: Peace is good
+7) The jack's terminal shows: Qfbdf!jt!hppe i.e. each ascii char + 1 what bob typed
+    Alice's terminal shows the original message:
+    Peace is good
+
+Known Bugs:
+Please don't use interrupts like ctrl+C to terminate any of the socket connections. No care has been taken to do this safely
+
+To Do:
+1) Currently all programs terminate after sending one message to alice through jack. The loop functionality to send messages continuously until some exit message gets typed.

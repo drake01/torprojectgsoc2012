@@ -1,0 +1,19 @@
+ab: Alice-Bob chat
+About: This is a socket based client-server application that I wrote in the initial days while learning Unix sockets. In the program, The server Alice starts listening on some port say 5000. Now the client Bob connects to the server Alice by specifying the server address (here, localhost) and port number (here, 5000) on command line. After the connection is established successfully, both Alice and Bob can send messages to each other. Using a message 'EXIT', Bob torns the connection down. Effectively a redumentary Chat app for a client and server.
+
+
+To compile:
+Use makefile.
+Run the make command: make
+
+How to use:
+1) Open 2 instances of terminal emulators say 3 xterms.. Effectively 3 new shell instances are needed 
+2) Change each emulators working directory to the directory containing the executables alice jack.
+3) In the first term emulator, type: ./alice 5000
+4) In second term emulator, type: ./bob localhost 5000
+5) If 3,4 ran successfully, both alice and bob is waiting for your input. 
+    Enter some text in any of the terminal.
+6) The other terminal shows the message sent from the opposite side. This keeps going on until client bob type EXIT as message.
+
+Known Bugs:
+Please don't use interrupts like ctrl+C to terminate any of the socket connections. No care has been taken to do this safely
